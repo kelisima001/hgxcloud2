@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../upload/layui/css/layui.css"  media="all">
+<link rel="stylesheet" href="../upload/css/jquery.slider.css" />
+<link rel="stylesheet" href="../upload/css/index.css" />
+<link rel="stylesheet" href="../upload/bootstrap/css/bootstrap.css" />
+
+<script type="text/javascript" src="../upload/js/jquery.min.js"></script>
+<script type="text/javascript" src="../upload/layui/layui.js"></script>
+<script type="text/javascript" src="../upload/js/jquery.slider.min.js"></script>
+<script type="text/javascript" src="../upload/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../upload/js/include.js"></script>
+<script type="text/javascript" language="javascript">   
+//获取iframe子页面内容高度给iframe动态设置高度  
+ 
+$(document).ready(function(){
+	var headerHeight=sessionStorage.getItem("headerHeight");
+	var footerHeight=sessionStorage.getItem("footerHeight");
+	console.log(headerHeight);
+	console.log(footerHeight);
+	$("#iframepage").css("height",headerHeight);
+	$("#footer").css("height",footerHeight);
+});
+
+</script>
+</head>
+<body>
+
+<iframe id="iframepage"   src="header.html"></iframe>
+
+
+<iframe id="footer" src="footer.html" ></iframe>
+
+<!-- <iframe src="header.html"></iframe> -->
+</body>
+</html>

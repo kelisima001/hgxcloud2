@@ -1,0 +1,21 @@
+body{
+	font-size:0.65em;
+}
+#formDiv{
+	font-size: 2em;
+    text-align: center;
+    margin-top: 10%;
+}
+#loginForm {
+    
+}
+.container {
+    margin-left: 40%;
+    position: absolute;
+}
+#btnOk {
+    margin-top: 2%;
+}
+input{
+	font-size:1em;
+}

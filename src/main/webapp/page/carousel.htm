@@ -1,0 +1,74 @@
+<script type="text/javascript" src="../../resources/layui/layui.js"></script>
+<link rel="stylesheet" href="../../resources/layui/css/layui.css"  media="all">
+<div class="layui-carousel" id="layui-carousel1" lay-filter="layui-carousel">
+  <div carousel-item="">
+    <div><img src="../../img1.bj.wezhan.cn/content/sitefiles/2023831/images/7718044_banner07.jpeg"  alt="图片1" /></div>
+    <div><img   src="../../img1.bj.wezhan.cn/content/sitefiles/2023831/images/7694467_banner08.jpeg"  alt="图片2" /></div>
+    
+  </div>
+</div>
+
+<script type="text/javascript" src="../resources/layui/layui.js"></script>
+<link rel="stylesheet" href="../resources/layui/css/layui.css"  media="all">
+<div class="layui-carousel" id="layui-carousel1" lay-filter="layui-carousel">
+  <div carousel-item="">
+    <div><img src="../img1.bj.wezhan.cn/content/sitefiles/2023831/images/7718044_banner07.jpeg"  alt="图片1" /></div>
+    <div><img   src="../img1.bj.wezhan.cn/content/sitefiles/2023831/images/7694467_banner08.jpeg"  alt="图片2" /></div>
+    
+  </div>
+</div>
+
+<script>
+layui.use(['carousel', 'form'], function(){
+  var carousel = layui.carousel
+  ,form = layui.form;
+  
+  
+  //Í¼Æ¬ÂÖ²¥
+  carousel.render({
+    elem: '#layui-carousel1'
+    ,width: '100%'
+	,height:'100%'
+    ,interval: 5000
+  });
+  
+  //ÊÂ¼þ
+  carousel.on('change(test4)', function(res){
+    console.log(res)
+  });
+  
+  var $ = layui.$, active = {
+    set: function(othis){
+      var THIS = 'layui-bg-normal'
+      ,key = othis.data('key')
+      ,options = {};
+      
+      othis.css('background-color', '#5FB878').siblings().removeAttr('style'); 
+      options[key] = othis.data('value');
+      ins3.reload(options);
+    }
+  };
+  
+  //¼àÌý¿ª¹Ø
+  form.on('switch(autoplay)', function(){
+    ins3.reload({
+      autoplay: this.checked
+    });
+  });
+  
+  $('.demoSet').on('keyup', function(){
+    var value = this.value
+    ,options = {};
+    if(!/^\d+$/.test(value)) return;
+    
+    options[this.name] = value;
+    ins3.reload(options);
+  });
+  
+  //ÆäËüÊ¾Àý
+  $('.demoTest .layui-btn').on('click', function(){
+    var othis = $(this), type = othis.data('type');
+    active[type] ? active[type].call(this, othis) : '';
+  });
+});
+</script>

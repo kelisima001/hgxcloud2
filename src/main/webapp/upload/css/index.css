@@ -1,0 +1,43 @@
+body {
+    font-size: 0.65em;
+}
+.navSpan{
+	float: right;
+	font-size: 1.2em;
+	width: 50%;
+	margin-top: 1%;
+}
+#navNav img{
+	margin-left: 8%;
+	
+}
+.navSpan a{
+	margin-left:5%;
+}
+embed {
+    width: 100%;
+}
+.layui-carousel img{
+	width:100%;
+}
+iframe{
+	width:100%;
+	border: 0;
+}
+#footer html{
+	overflow:hidden;
+}
+.container{
+	margin-left:0;
+}
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

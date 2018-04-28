@@ -1,0 +1,69 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.1.xsd">
+
+    <!--使用spring组件扫描
+    一次性配置此包下所有的Handler-->
+    <context:component-scan base-package="com.hgx.controller"/>
+    <!-- 注解驱动 -->
+	<mvc:annotation-driven />
+
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/img.bj.wezhan.cn/**" location="/img.bj.wezhan.cn/" />
+	<mvc:resources mapping="/img1.bj.wezhan.cn/**" location="/img1.bj.wezhan.cn/" />
+	<mvc:resources mapping="/www.hgxcloud.com/**" location="/www.hgxcloud.com/" />
+	<mvc:resources mapping="/webapi.amap.com/**" location="/webapi.amap.com/" />
+	<mvc:resources mapping="/Scripts/**" location="/Scripts/" />
+	<mvc:resources mapping="/newsitem/**" location="/newsitem/" />
+	<mvc:resources mapping="/images/**" location="/images/" />
+	<mvc:resources mapping="/content/**" location="/content/" />
+	<mvc:resources mapping="/sitefiles/**" location="/sitefiles/" />
+	<mvc:resources mapping="/2023831/**" location="/2023831/" />
+	<mvc:resources mapping="/base/**" location="/base/" />
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/Plugins/**" location="/Plugins/" />
+	<mvc:resources mapping="/Designer/**" location="/Designer/" />
+	<mvc:resources mapping="/Content/**" location="/Content/" />
+	<mvc:resources mapping="/style/**" location="/style/" />
+	<mvc:resources mapping="/scripts/**" location="/scripts/" />
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/WEB-INF/page/**" location="/WEB-INF/jsp/" />
+	
+	<mvc:resources mapping="/*.html" location="/" />
+	<mvc:resources mapping="/*.jsp" location="/" />
+	<mvc:resources mapping="/*.jpg" location="/" />
+	<mvc:resources mapping="/*.css" location="/" />
+	<mvc:resources mapping="/*.png" location="/" />
+	<mvc:resources mapping="/*.ico" location="/" />
+	
+    <!--mvc的注解驱动器，通过它可以替代下边的处理器映射器和适配器-->
+    <!--<mvc:annotation-driven></mvc:annotation-driven>-->
+
+    <!--注解处理器映射器-->
+    <!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" /> -->
+
+    <!--注解的适配器-->
+    <!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="webBindingInitializer" ref="customBinder"></property>
+    </bean> -->
+
+    <!--配置视图解析器
+    要求将jstl的包加到classpath-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+</beans>

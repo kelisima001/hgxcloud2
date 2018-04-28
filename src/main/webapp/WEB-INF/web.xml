@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://java.sun.com/xml/ns/javaee" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>hgxcloud2</display-name>
+  <welcome-file-list>
+    <welcome-file>page/index.htm</welcome-file>
+    <!-- <welcome-file>www.hgxcloud.com/index.jsp</welcome-file> -->
+  </welcome-file-list>
+
+	 <!-- 加载Spring容器配置 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!-- 设置Spring容器加载所有的配置文件的路径 ,默认加载的是web-inf下的applicationcontext.xml文件，此处是自定义-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath*:spring-*.xml</param-value>
+    </context-param>
+     <!-- 统一编码 -->
+     <!-- <filter>
+         <filter-name>charsetEncoding</filter-name>
+         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+         <init-param>
+             <param-name>encoding</param-name>
+             <param-value>UTF-8</param-value>
+         </init-param>
+         <init-param>
+             <param-name>forceEncoding</param-name>
+             <param-value>true</param-value>
+         </init-param>
+     </filter> -->
+     
+     <filter>
+    <filter-name>charsetEncoding</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+     
+     <filter-mapping>
+         <filter-name>charsetEncoding</filter-name>
+         <url-pattern>/*</url-pattern>
+     </filter-mapping>
+     <!-- 前端控制器 -->
+     <servlet>
+         <servlet-name>springmvc</servlet-name>
+         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+         <!-- 默认加载的是wen-inf下的XXX-servlet.xml（springMVC-servlet.xml）文件，此处自定义 -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath*:spring-mvc.xml</param-value>
+        </init-param>
+         <!-- 加载/WEB-INF/[servlet-name]-servlet.xml -->
+         <load-on-startup>1</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+         <servlet-name>springmvc</servlet-name>
+	     <url-pattern>/</url-pattern>
+     </servlet-mapping>
+
+	 <!-- 防止Spring内存溢出监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
+    <!-- 登陆验证 -->
+    <filter>
+   <filter-name>AuthFilter</filter-name>
+   <filter-class>com.hgx.filter.AuthFilter</filter-class>
+</filter>
+ 
+<filter-mapping>
+   <filter-name>AuthFilter</filter-name>
+   <url-pattern>*.jsp</url-pattern><!-- 表示对所有jsp文件有效 -->
+</filter-mapping>
+<!-- session超时设置 -->
+<session-config>
+    <session-timeout>30</session-timeout>           <!-- 单位为分钟，例如30分钟 -->
+</session-config>
+</web-app>
+

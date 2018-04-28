@@ -1,0 +1,10 @@
+#hgx-footer{
+	background-color: black;
+	font-size: 0.8em;
+	text-align:center;
+    color: white;
+    width:100%;
+}
+html{
+	overflow: hidden;
+}
